@@ -9,12 +9,13 @@ import AbsolutePosition from './components/animated/AbsolutePosition';
 import ColorInterpolation from './components/animated/ColorInterpolation';
 import Rotation from './components/animated/Rotation';
 import Percentage from './components/animated/Percentage';
+import Event from './components/animated/Event';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Percentage />
+        <Event />
       </View>
     );
   }
