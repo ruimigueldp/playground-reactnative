@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Opacity from './components/animated/Opacity';
 import Translate from './components/animated/Translate';
 import Scale from './components/animated/Scale';
+import ScaleSpring from './components/animated/ScaleSpring';
 import HeightNWidth from './components/animated/HeightNWidth';
 import AbsolutePosition from './components/animated/AbsolutePosition';
 import ColorInterpolation from './components/animated/ColorInterpolation';
@@ -15,7 +16,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Event />
+        <ScaleSpring />
       </View>
     );
   }

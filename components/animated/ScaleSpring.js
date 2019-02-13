@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
 
-import { StyleSheet, View, Animated, TouchableWithoutFeedback, Easing } from 'react-native';
+import { StyleSheet, View, Animated, TouchableWithoutFeedback } from 'react-native';
 
-class Translate extends Component {
+class ScaleSpring extends Component {
   state = {
-    animation: new Animated.Value(0)
+    animation: new Animated.Value(1)
   };
 
   startAnimation = () => {
-    Animated.timing(this.state.animation, {
-      toValue: 300,
-      duration: 1500,
-      easing: Easing.bounce
-      // easing: Easing.back(5),
-      // easing: Easing.elastic(3),
-      // easing: Easing.bezier(.06, 1, .86 .23)
+    // the log show the value animated values
+    this.state.animation.addListener(({ value }) => {
+      console.log(value);
+    });
+
+    Animated.spring(this.state.animation, {
+      toValue: 2,
+      friction: 2,
+      tension: 160
     }).start(() => {
-      this.state.animation.setValue(0);
+      Animated.timing(this.state.animation, {
+        toValue: 1,
+        duration: 100
+      }).start();
     });
   };
 
@@ -24,7 +29,7 @@ class Translate extends Component {
     const animatedStyles = {
       transform: [
         {
-          translateY: this.state.animation
+          scale: this.state.animation
         }
       ]
     };
@@ -52,4 +57,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Translate;
+export default ScaleSpring;
